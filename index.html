@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用Vue实现简易计算器</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="num1">
+        <select name="" id="" v-model="type">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model.number="num2">
+        <button @click="handleClick">=</button>
+        <span>{{ result }}</span>
+    </div>
+
+</body>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            num1: 0,
+            num2: 0,
+            type: '+',
+            result: 0
+        },
+        methods: {
+            handleClick() {
+                const { type, num1, num2 } = this;
+                switch (type) {
+                    case '+':
+                        this.result = num1 + num2;
+                        break;
+                    case '-':
+                        this.result = num1 - num2;
+                        break;
+                    case '*':
+                        this.result = num1 * num2;
+                        break;
+                    case '/':
+                        this.result = num1 / num2;
+                        break;
+                }
+            }
+        }
+    })
+</script>
+
+</html>
